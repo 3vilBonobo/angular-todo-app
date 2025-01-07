@@ -1,0 +1,40 @@
+@import "./app/global-variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  background-color: $veryDarkBlue;
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.btn {
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #cecece;
+  padding: 0.35rem 1rem 0.25rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #ecf2fd;
+}
+
+.btn:active {
+  background-color: #d1e0fe;
+}
+
+.btn:focus {
+  outline: none;
+  border: black solid 2px;
+}

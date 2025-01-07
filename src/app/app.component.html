@@ -1,0 +1,51 @@
+<header class="header"></header>
+<div class="main">
+  <h1 class="component-title">{{ componentTitle }}</h1>
+  <label class="add-item-label" for="addItemInput">What would you like to do today?</label>
+
+  <div class="input-wrapper">
+    <input #newItem placeholder="Create a new todo..." (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+      class="lg-text-input" id="addItemInput" />
+
+    <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+  </div>
+
+
+
+  <!-- Buttons that filter tasks on click -->
+  <div class="filters-wrapper">
+
+    <h2 class="item-num ">
+      {{items.length}}
+      <span class="item-count"> @if (items.length === 1) { task } @else { tasks } </span>
+    </h2>
+
+    <div class="btn-wrapper">
+      <button class="btn btn-menu" [class.active]="filter == 'all'" (click)="filter = 'all'">
+        All
+      </button>
+
+      <button class="btn btn-menu" [class.active]="filter == 'active'" (click)="filter = 'active'">
+        Active
+      </button>
+
+      <button class="btn btn-menu" [class.active]="filter == 'done'" (click)="filter = 'done'">
+        Completed
+      </button>
+    </div>
+
+  </div>
+
+  <ul>
+    @for (item of items; track item.description) {
+    <li>
+      <app-item (remove)="remove(item)" [item]="item"></app-item>
+    </li>
+    }
+  </ul>
+
+</div>
+<footer>
+  Coded by
+  <a href="https://github.com/3vilBonobo" target="_blank"> Irinella Boutsika</a>
+</footer>

@@ -1,0 +1,34 @@
+<div class="item">
+    <div class="task-info">
+        <input [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" />
+        <label class="todo-description" [for]="item.description">{{item.description}}</label>
+    </div>
+
+
+    @if (!editable) {
+    <div class="btn-wrapper">
+        <button class="btn btn-edit" (click)="editable = !editable">Edit</button>
+
+        <button class="btn btn-warn" (click)="remove.emit()"><svg class="delete-svg" xmlns="http://www.w3.org/2000/svg"
+                width="18" height="18">
+                <path fill-rule="evenodd"
+                    d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
+            </svg></button>
+    </div>
+    }
+
+    <!-- This section shows only if user clicks Edit button -->
+    @if (editable) {
+    <div>
+        <input class="sm-text-input" placeholder="edit item" [value]="item.description" #editedItem
+            (keyup.enter)="saveItem(editedItem.value)" />
+
+        <div class="btn-wrapper">
+            <button class="btn" (click)="editable = !editable">Cancel</button>
+            <button class="btn btn-save" (click)="saveItem(editedItem.value)">
+                Save
+            </button>
+        </div>
+    </div>
+    }
+</div>
